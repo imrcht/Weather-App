@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" 
+    integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Weather Info</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <div class="box">
+        <div class="wave -one"></div>
+        <div class="wave -two"></div>
+        <div class="wave -three"></div>
+  
+        <div id="weathercon">
+          <i class="fas fa-sun" style="color: yellowgreen"></i>
+        </div>
+  
+        <div class="info">
+          <h2 class="location">
+            <i class="fas fa-compass" style="color: red"></i>
+            <%= City%> <%= Cont%>
+          </h2>
+          <p id="date"></p>
+          <h1 class="temp"><%= Temp%>&deg;C</h1>
+          <h3 class="tempmin_max">
+            Min <%= minTemp%>&deg;C | Max <%= maxTemp%>&deg;C
+            <div>
+                Weather Condition <%= poss%>
+            </div>
+          </h3>
+        </div>
+      </div>
+
+      <script> 
+        var curtime = document.getElementById("date");
+        let curweather = document.getElementById("weathercon");
+
+        const tempstatus = "<%= tempstatus%>";
+
+        if (tempstatus == "Sunny"){
+          weathercon.innerHTML =  "<i class='fas fa-sun' style='color: yellowgreen'></i>";
+        }
+        else if (tempstatus == "Clouds"){
+          weathercon.innerHTML = '<i class="fas fa-cloud-meatball" style="color: #a97f8c" ></i>';
+        }
+        else if (tempstatus == "Rain"){
+          weathercon.innerHTML = '<i class="fas fa-umbrella" style="color: #c936b2"></i>';
+        }
+        else {
+          weathercon.innerHTML =  "<i class='fas fa-sun' style='color: yellowgreen'></i>";
+        }
+
+
+        const getcurrenttime = () => {
+          let currenttime = new Date();
+          var weekday = [
+            "SUN",
+            "MON",
+            "TUE",
+            "WED",
+            "THU",
+            "FRI",
+            "SAT"
+          ];
+          let day = weekday[currenttime.getDay()];
+
+          var months = [
+            "JAN",
+            "FEB",
+            "MAR",
+            "APR",
+            "MAY",
+            "JUNE",
+            "JULY",
+            "AUG",
+            "SEPT",
+            "OCT",
+            "NOV",
+            "DEC"
+          ];
+          let month = months[currenttime.getMonth()];
+          let curdate = currenttime.getDate();
+          let hours = currenttime.getHours();
+          let min = currenttime.getMinutes();
+          var period = "AM";
+          if (hours >= 12){
+            period = "PM";
+            if (hours >= 13){
+              hours -= 12;
+            }
+          }
+          return `${day} | ${month} ${curdate} | ${hours}:${min} ${period}`;
+        }
+
+        curtime.innerHTML = getcurrenttime();
+      </script>
+</body>
+</html>
