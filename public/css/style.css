@@ -7,7 +7,9 @@
 
 body {
   background: black;
-  background-image: url("https://cdn.vox-cdn.com/thumbor/YegVKRHwkSRzQCMXbVO3lKCh3Ao=/1400x1050/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/22656391/MarvelsAvengers_E3SEP_BlackPanther.png");
+  background-image: url("https://cdn.dribbble.com/users/925716/screenshots/3333720/attachments/722375/night.png?compress=1&resize=400x300");
+  background-repeat: no-repeat;
+  background-size: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
